@@ -1,0 +1,23 @@
+#primaryButtonType{
+    border-color: indianred;
+    color: indianred;
+    background-color: aliceblue;
+}
+
+#primaryButtonType:hover{
+    color:black;
+    border-color: black;
+}
+
+#innerbox{
+    margin: 100px;
+}
+
+
+#button{
+    margin-right: 15px;
+}
+
+#button:hover{
+    font-weight: bold;
+}

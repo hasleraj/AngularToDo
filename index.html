@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Angular JS -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src = "ListController.js"></script>
+        
+        <!-- External Style Sheet -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        
+        <!--Bootstrap-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        
+    </head>
+    <body>
+        <!-- Container -->
+        <div class="container-fluid">
+            <h1>To Do List</h1>
+            <div ng-app="ToDoList" ng-controller="ToDoController as toDoCtrl">
+                <div id="innerBox">
+                    <!-- Form for input -->
+                    <form name="taskForm" class="form-group" novalidate>
+                        <!--Shows a message if user tries to insert empty task into list -->
+                        <div>Enter a task: </div>
+                        <div class="col-xs-4">
+                            <input ng-model="task" name="entry" type="text" class="form-control" required>
+                        </div>
+                        <div ng-show="taskForm.$dirty && taskForm.$invalid"> Ensure you have entered a task!</div>
+                         <!--Ensures user cannot insert an empty task -->
+                        <button ng-click="taskForm.$valid && addTask()" class="btn btn-info-outline" id="primaryButtonType">Add to the List</button>
+                    </form>
+                </div>
+                <!-- List of tasks to be displayed -->
+                <div class="list-group">
+                    <a ng-repeat="task in tasks track by $index" class="list-group-item">
+                        <button ng-click="deleteTask(task)" type="button" class="btn btn-danger" id="button">x</button> 
+                        {{ task }} 
+                    </a>
+                </div>
+                 <!--Clears out previous list and makes a new one -->
+                <div>
+                    <button ng-click="resetTaskList()" class="btn btn-info-outline" id="primaryButtonType">Make a new List</button>
+                </div>
+            </div>
+        </div>
+    </body>  
+</html>
